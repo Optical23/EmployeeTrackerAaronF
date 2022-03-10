@@ -3,17 +3,21 @@ CREATE DATABASE employee_db;
 
 USE employee_db;
 
+DROP TABLE IF EXISTS department;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS employee;
+
 CREATE TABLE department(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     department_name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE job_role(
+CREATE TABLE role(
     id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30),
     salary DECIMAL(8,0),
-    department INTEGER,
-    FOREIGN KEY (department)
+    department_id INTEGER,
+    FOREIGN KEY (department_id)
     REFERENCES department(id)
     ON DELETE SET NULL
 );
@@ -23,8 +27,11 @@ CREATE TABLE employee(
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     manager_id INTEGER,
-    employee_role INTEGER,
-    FOREIGN KEY (employee_role)
-    REFERENCES job_role(id)
+    role_id INTEGER,
+    FOREIGN KEY (role_id)
+    REFERENCES role(id)
     ON DELETE SET NULL,
+    FOREIGN KEY (manager_id)
+    REFERENCES employee(id)
+    ON DELETE SET NULL
 );
