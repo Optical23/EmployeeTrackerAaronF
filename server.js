@@ -28,7 +28,7 @@ db.connect(err => {
 });
 
 const promptStart = () => {
-    inquirer.prompt([...startPrompt]).then(response => {
+    inquirer.prompt(startPrompt).then(response => {
         switch(response.action){
             case 'View departments':
                 viewDepartments();
