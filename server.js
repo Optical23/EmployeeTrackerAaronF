@@ -62,7 +62,7 @@ const promptStart = () => {
 
 
 const viewDepartments = () => {
-    db.query('SELECT * FROM department', function(err, res) {
+    db.query('SELECT department_name FROM department', function(err, res) {
         if (err) throw err;
         console.table(res);
         promptStart();
