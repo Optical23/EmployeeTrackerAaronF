@@ -16,7 +16,7 @@ const startPrompt = [{
 
 const addDepartmentPrompt = [{
     type: 'input',
-    message: 'What is the name of the department?',
+    message: 'What is the name of the new department?',
     name: 'departmentName',
 }];
 
@@ -24,7 +24,7 @@ const addRolePrompt = [
     {
         type: 'input',
         message: 'What is the name of the role?',
-        name: 'name'
+        name: 'title'
     },
     {
         type: 'input',
@@ -33,8 +33,8 @@ const addRolePrompt = [
     },
     {
         type: 'input',
-        message: 'Which department does the role belong to?',
-        name: 'department'
+        message: 'Which department does the role belong to (by Id)?',
+        name: 'department_id'
     }
 ];
 
@@ -51,12 +51,12 @@ const addEmployeePrompt = [
     },
     {
         type: 'input',
-        message: "What is the employee's role?",
+        message: "What is the employee's role? (by id)",
         name: 'role'
     },
     {
         type: 'input',
-        message: "Who is the employee's manager?",
+        message: "Who is the employee's manager? (by id)",
         name: 'manager'
     }
 ];
