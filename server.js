@@ -21,7 +21,6 @@ const db = mysql.createConnection(
 
 db.connect(err => {
     if (err) throw err;
-    console.log('Database of Employees is live');
     app.listen(PORT, () => {
         console.log(`Server running on port ${PORT}`);
     });
@@ -124,10 +123,19 @@ const addEmployee = () => {
 };
 
 const changeEmployeeRole = () => {
-    db.query();
+    inquirer.prompt(changeEmployeeRolePrompt)
+    .then(response => {
+        db.query('UPDATE employee SET role_id = ? WHERE id = ?', [response.newRole, response.id], function(err, res) {
+            if (err) throw err;
+            console.table(res);
+            console.table("The employee's role has been updated");
+            promptStart();
+        })
+    })
 }
 
 const exit = () => {
     console.log('Thanks for using employee tracker.');
     db.end();
+    process.exit();
 }

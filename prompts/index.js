@@ -63,13 +63,13 @@ const addEmployeePrompt = [
 
 const changeEmployeeRolePrompt = [
     {
-        type: 'list',
+        type: 'input',
         message: "Enter the Employee's ID to update the role",
         name: 'id'
     },
     {
         type: 'input',
-        message: "What is the employee's new role?",
+        message: "What is the employee's new role? (by Id)",
         name: 'newRole'
     }
 ];
